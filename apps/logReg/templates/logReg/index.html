@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="">
+    <title>Log index</title>
+</head>
+<h1>Registration</h1>
+<p>password should be at least 8 characters, and contain 1 number, and 1 uppercase letter.</p>
+{% if messages %}
+    {% for message in messages %}
+    <h1>{{ message }}</h1>
+    {% endfor %}
+{% endif %}
+
+<form action="/process" method="post">
+    {% csrf_token %}
+    <input type="text" name="first" placeholder="First Name">
+    <input type="text" name="last" placeholder="Last Name">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="confirm" placeholder="Confirm Password">
+    <input type="submit" value="Register">
+</form>
+<h2>Log In</h2>
+<form action="/log_in" method="post">
+    {% csrf_token %}
+    <input type="text" name="elog" placeholder="Email">
+    <input type="password" name="plog" placeholder="Password">
+    <input type="submit" value="Log In">
+</form>
+</body>
+</html>
